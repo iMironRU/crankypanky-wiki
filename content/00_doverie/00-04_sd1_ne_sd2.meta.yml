@@ -1,0 +1,20 @@
+id: 00-04_sd1_ne_sd2
+title: "СД1 — это не СД2"
+card_type: knowledge
+severity: routine
+disease_scope: t1d            # ИНВАРИАНТ: только t1d. СД1 ≠ СД2.
+audience: [self_adult, adolescent_transition, caregiver_of_child, caregiver_of_adult]    # роли-адресаты (именованные)
+publish_state: draft_verifying
+signoff: pending
+signoff_by:
+freshness:
+  class: evergreen
+  last_reviewed: 2026-05-17
+  review_cycle_months: 36
+  watch_sources: []
+clinical_refs:
+  - "ISPAD CPCG 2024 — Editorial (действующая 7-я редакция). Horm Res Paediatr 2024;97(6):527-528. doi:10.1159/000543154"
+external_references: []
+tags: [sd1-ne-sd2, redpolitika, bazovoe]
+authors: [iMironRU]
+contributors: [iMironRU]

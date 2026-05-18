@@ -1,0 +1,22 @@
+id: 02-05_kogda_vyzyvat_skoruyu
+title: "Когда вызывать скорую"
+card_type: knowledge
+severity: acute
+disease_scope: t1d            # ИНВАРИАНТ: только t1d. СД1 ≠ СД2.
+audience: [self_adult, adolescent_transition, caregiver_of_child, caregiver_of_adult]    # роли-адресаты (именованные)
+publish_state: draft_verifying
+signoff: pending
+signoff_by:
+freshness:
+  class: slow
+  last_reviewed: 2026-05-17
+  review_cycle_months: 3
+  watch_sources:
+    - "ISPAD CPCG — гипогликемия / ДКА (текущая редакция)"
+clinical_refs:
+  - "ISPAD CPCG 2022 — Assessment and management of hypoglycemia in children and adolescents with diabetes. Pediatric Diabetes 2022. doi:10.1111/pedi.13443"
+  - "ISPAD CPCG 2024 — Editorial. Horm Res Paediatr 2024;97(6):527-528. doi:10.1159/000543154"
+external_references: []
+tags: [skoraya, ekstrennye-priznaki, ostroe, mozhno-li]
+authors: [iMironRU]
+contributors: [iMironRU]

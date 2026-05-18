@@ -1,0 +1,21 @@
+id: NN-MM_slug
+title: "{Заголовок}"
+card_type: decision
+severity: routine
+disease_scope: t1d            # ИНВАРИАНТ: только t1d. СД1 ≠ СД2.
+audience: [self_adult, adolescent_transition, caregiver_of_child, caregiver_of_adult]
+# роли: self_adult | adolescent_transition | caregiver_of_child | caregiver_of_adult — оставить применимые    # роли-адресаты (именованные)
+publish_state: draft_verifying
+signoff: pending
+signoff_by:
+freshness:
+  class: volatile          # decision всегда volatile
+  last_reviewed: 2026-05-17
+  review_cycle_months: 3
+  watch_sources: []
+facets: {}                 # данные фасетов; представление решаем позже
+clinical_refs: []
+external_references: []
+tags: []
+authors: [iMironRU]
+contributors: [iMironRU]

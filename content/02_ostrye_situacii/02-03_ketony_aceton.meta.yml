@@ -1,0 +1,24 @@
+id: 02-03_ketony_aceton
+title: "Кетоны и ацетон: пороги и действия"
+card_type: knowledge
+severity: acute
+disease_scope: t1d            # ИНВАРИАНТ: только t1d. СД1 ≠ СД2.
+audience: [self_adult, adolescent_transition, caregiver_of_child, caregiver_of_adult]    # роли-адресаты (именованные)
+publish_state: draft_verifying
+signoff: pending
+signoff_by:
+freshness:
+  class: slow
+  last_reviewed: 2026-05-17
+  review_cycle_months: 3
+  watch_sources:
+    - "ISPAD CPCG — глава по ДКА (текущая редакция)"
+clinical_refs:
+  - "ISPAD CPCG 2024 — Editorial (действующая 7-я редакция). Horm Res Paediatr 2024;97(6):527-528. doi:10.1159/000543154"
+external_references:
+  - title: "TODO reviewer: глава ISPAD по диабетическому кетоацидозу"
+    url: ""
+    note: "Внести точную ссылку и числовые пороги при человеческой вычитке"
+tags: [ketony, aceton, dka, ostroe]
+authors: [iMironRU]
+contributors: [iMironRU]

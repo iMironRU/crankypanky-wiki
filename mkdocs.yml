@@ -1,0 +1,9 @@
+site_name: CrankyPanky — база знаний для семей с СД1
+site_description: Образовательный ресурс для детей с СД1 и их родителей
+docs_dir: build
+theme:
+  name: material
+  language: ru
+  features: [navigation.sections, navigation.top, search.suggest, content.code.copy]
+markdown_extensions: [admonition, attr_list, tables, toc]
+plugins: [search]

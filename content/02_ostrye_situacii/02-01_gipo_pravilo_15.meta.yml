@@ -1,0 +1,23 @@
+id: 02-01_gipo_pravilo_15
+title: "Гипогликемия: правило 15"
+card_type: knowledge
+severity: acute
+disease_scope: t1d            # ИНВАРИАНТ: только t1d. СД1 ≠ СД2.
+audience: [self_adult, adolescent_transition, caregiver_of_child, caregiver_of_adult]    # роли-адресаты (именованные)
+publish_state: draft_verifying
+signoff: pending
+signoff_by:
+freshness:
+  class: slow
+  last_reviewed: 2026-05-17
+  review_cycle_months: 3
+  watch_sources:
+    - "ISPAD CPCG — глава по гипогликемии (текущая редакция)"
+clinical_refs:
+  - "ISPAD CPCG 2022 — Assessment and management of hypoglycemia in children and adolescents with diabetes. Pediatric Diabetes 2022. doi:10.1111/pedi.13443"
+  - "ISPAD CPCG 2024 — Editorial (подтверждает 2024 как действующую 7-ю редакцию). Horm Res Paediatr 2024;97(6):527-528. doi:10.1159/000543154"
+  - "ADA Standards of Care in Diabetes 2024 — Ch.14 Children and Adolescents. Diabetes Care 2024;47(Suppl 1):S258"
+external_references: []
+tags: [gipoglikemiya, pravilo-15, ostroe, pervaya-pomoshch]
+authors: [iMironRU]
+contributors: [iMironRU]

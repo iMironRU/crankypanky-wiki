@@ -1,0 +1,24 @@
+# Метаданные карточки. Каноничны. Фронтматтер для MkDocs инжектится из этого.
+id: 08-02_gde_brat_rashodku
+title: "Где брать расходку"
+card_type: knowledge            # knowledge | decision
+severity: routine          # acute | routine
+disease_scope: t1d            # ИНВАРИАНТ: только t1d. СД1 ≠ СД2.
+audience: [self_adult, adolescent_transition, caregiver_of_child, caregiver_of_adult]    # роли-адресаты (именованные)
+
+publish_state: draft_verifying          # draft_verifying | published
+signoff: pending            # pending | signed (кто подписал — в signoff_by)
+signoff_by:                   # ФИО/роль человека с медобразованием; пусто пока pending
+
+freshness:
+  class: volatile             # evergreen | slow | volatile (ограничен типом карточки)
+  last_reviewed: 2026-05-17   # ставит человек при ревью
+  review_cycle_months: 3  # можно только УКОРОТИТЬ относительно максимума класса
+  # next_review и state НЕ пишем руками — вычисляет tools/freshness.py
+  watch_sources: []           # событийная дорожка: при изменении источника карточка флагуется
+
+clinical_refs: []             # обязательно непусто для severity: acute при signoff: signed
+external_references: []
+tags: []
+authors: [iMironRU]
+contributors: [iMironRU]

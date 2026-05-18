@@ -1,0 +1,32 @@
+id: 04-02_vybor_pompy_petlya
+title: "Выбор помпы под петлю"
+card_type: decision
+severity: routine
+disease_scope: t1d            # ИНВАРИАНТ: только t1d. СД1 ≠ СД2.
+audience: [self_adult, adolescent_transition, caregiver_of_child, caregiver_of_adult]    # роли-адресаты (именованные)
+
+publish_state: draft_verifying
+signoff: pending
+signoff_by:
+
+freshness:
+  class: volatile
+  last_reviewed: 2026-05-17
+  review_cycle_months: 3
+  watch_sources:
+    - "Производители помп — статус моделей и поддержки"
+    - "AndroidAPS / Loop / Trio — поддерживаемые связки"
+
+# Фасеты решающей карточки — это данные. Представление решаем позже.
+facets:
+  region: [RU, COM]
+  existing_sensor: [libre, dexcom, medtronic, none]
+  loop_kind: [diy, factory, none]
+  child_age_band: [under6, 6plus]
+  form: [tubed, patch]
+
+clinical_refs: []
+external_references: []
+tags: [pompa, petlya, vybor, decision, mozhno-li]
+authors: [iMironRU]
+contributors: [iMironRU]

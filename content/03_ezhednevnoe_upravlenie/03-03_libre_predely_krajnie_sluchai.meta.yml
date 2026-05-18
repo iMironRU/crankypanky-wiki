@@ -1,0 +1,26 @@
+id: 03-03_libre_predely_krajnie_sluchai
+title: "Libre: пределы и крайние случаи"
+card_type: knowledge
+severity: routine
+disease_scope: t1d            # ИНВАРИАНТ: только t1d. СД1 ≠ СД2.
+audience: [self_adult, adolescent_transition, caregiver_of_child, caregiver_of_adult]    # роли-адресаты (именованные)
+
+publish_state: draft_verifying
+signoff: pending
+signoff_by:
+
+freshness:
+  class: slow
+  last_reviewed: 2026-05-17
+  review_cycle_months: 12
+  watch_sources:
+    - "Abbott FreeStyle Libre — официальная спецификация и поддержка"
+
+clinical_refs: []
+external_references:
+  - title: "Abbott — что происходит с сенсором вне диапазона температур"
+    url: "https://www.freestyle.abbott/en-jo/support/what-if-the-sensor-gets-too-hot-or-cold-.html"
+    note: "Рабочий диапазон 10–45 °C; вне него ошибка, при перегреве — повреждение"
+tags: [libre, sensor, sauna, voda, aeroport, mozhno-li]
+authors: [iMironRU]
+contributors: [iMironRU]
