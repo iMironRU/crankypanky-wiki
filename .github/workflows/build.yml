@@ -1,0 +1,58 @@
+name: Build CrankyPanky
+
+on:
+  schedule:
+    - cron: '0 2 * * *'   # ежедневно 02:00 UTC — ловит протухание по сроку
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+
+      - name: Install
+        run: pip install -r requirements.txt
+
+      - name: Гейт доверия (валидатор метаданных)
+        run: python tools/validate_metadata.py content/
+
+      - name: ИИ-предфильтр (необязательный, не блокирует)
+        continue-on-error: true
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+        run: |
+          [ -z "$DEEPSEEK_API_KEY" ] && { echo "ключа нет — пропуск"; exit 0; }
+          for f in $(git diff --name-only HEAD~1 -- 'content/**/*.md' 2>/dev/null); do
+            [ -f "$f" ] && ./scripts/review.sh "$f" || true
+          done
+
+      - name: Сборка build/ (+ индексы, дашборд свежести)
+        run: python tools/inject_frontmatter.py
+
+      - name: MkDocs build
+        run: mkdocs build --strict
+
+      # Деплой по умолчанию — GitHub Pages. На Cloudflare Pages (превью на
+      # каждый PR, быстрее в РФ/СНГ) меняется этот шаг, репозиторий тот же.
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with: { path: site }
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions: { pages: write, id-token: write }
+    environment:
+      name: github-pages
+    steps:
+      - uses: actions/deploy-pages@v4
