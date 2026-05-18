@@ -10,7 +10,7 @@ F="$F" SD="$SD" RD="$RD" MODEL="$MODEL" python3 - <<'PY'
 import os,sys,json,re,urllib.request,urllib.error
 from datetime import date
 from pathlib import Path
-F=Path(os.environ["F"]); RD=Path(os.environ["RD"]); MODEL=os.environ["MODEL"]
+F=Path(os.environ["F"]).resolve(); RD=Path(os.environ["RD"]); MODEL=os.environ["MODEL"]
 is_oa=MODEL.startswith(("gpt-","o1","o3","o4","chatgpt"))
 env={}
 ep=RD/".env"
