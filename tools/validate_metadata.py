@@ -9,6 +9,7 @@ except ImportError:
     print("ERROR: pip install pyyaml"); sys.exit(1)
 sys.path.insert(0, str(Path(__file__).parent))
 from freshness import policy_max_cycle, state, next_review
+from crossrefs import broken_refs
 
 REQUIRED = ["id","title","card_type","severity","disease_scope","audience","publish_state","signoff","freshness"]
 CARD_TYPES=["knowledge","decision"]; SEVERITY=["acute","routine"]
@@ -103,7 +104,16 @@ def main():
         if errs:
             bad+=1; print(f"FAIL {mf}")
             for x in errs: print(f"   - {x}")
-    print(f"\nПроверено: {len(files)}, с ошибками: {bad}")
+    # отсылка «→ См. «…»» должна вести на существующую карточку/модуль: иначе в
+    # build/ она останется текстом, и в стрессе по ней не перейти. Решено: только
+    # предупреждение, сборку не валит
+    refs={}
+    for md,line,title,why in broken_refs(base): refs.setdefault(md,[]).append(f"строка {line}: отсылка «{title}» {why}")
+    for md,warns in refs.items():
+        print(f"WARN {md}")
+        for x in warns: print(f"   - {x}")
+    nref=sum(map(len,refs.values()))
+    print(f"\nПроверено: {len(files)}, с ошибками: {bad}"+(f", битых отсылок: {nref} (не блокирует)" if nref else ""))
     sys.exit(1 if bad else 0)
 
 if __name__=="__main__": main()
