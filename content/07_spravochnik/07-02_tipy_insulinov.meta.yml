@@ -1,24 +1,35 @@
-# Метаданные карточки. Каноничны. Фронтматтер для MkDocs инжектится из этого.
 id: 07-02_tipy_insulinov
 title: "Типы инсулинов"
-card_type: knowledge            # knowledge | decision
-severity: routine          # acute | routine
+card_type: knowledge
+severity: routine
 disease_scope: t1d            # ИНВАРИАНТ: только t1d. СД1 ≠ СД2.
 audience: [self_adult, adolescent_transition, caregiver_of_child, caregiver_of_adult]    # роли-адресаты (именованные)
-
-publish_state: draft_verifying          # draft_verifying | published
-signoff: pending            # pending | signed (кто подписал — в signoff_by)
-signoff_by:                   # ФИО/роль человека с медобразованием; пусто пока pending
-
+publish_state: draft_verifying
+signoff: pending
+signoff_by:
 freshness:
-  class: slow             # evergreen | slow | volatile (ограничен типом карточки)
-  last_reviewed: 2026-05-17   # ставит человек при ревью
-  review_cycle_months: 12  # можно только УКОРОТИТЬ относительно максимума класса
-  # next_review и state НЕ пишем руками — вычисляет tools/freshness.py
-  watch_sources: []           # событийная дорожка: при изменении источника карточка флагуется
-
-clinical_refs: []             # обязательно непусто для severity: acute при signoff: signed
-external_references: []
-tags: []
+  class: slow
+  last_reviewed: 2026-05-17
+  review_cycle_months: 12
+  watch_sources:
+    - "ISPAD CPCG — Insulin and adjunctive treatments (текущая редакция)"
+    - "ГРЛС / рынок РФ — статус детемира («Левемир») и новых биоаналогов"
+    - "EMA SmPC / инструкции — сроки хранения начатых ручек"
+clinical_refs:
+  - "ISPAD CPCG 2024 — Insulin and adjunctive treatments in children and adolescents with diabetes (Cengiz et al.). Horm Res Paediatr 2024;97(6):584-614. doi:10.1159/000543169"
+external_references:
+  - title: "EMA — Toujeo (гларгин 300): общая характеристика препарата"
+    url: "https://www.ema.europa.eu/en/documents/product-information/toujeo-epar-product-information_en.pdf"
+    note: "Запрет набирать из ручки шприцем — риск тяжёлой передозировки"
+  - title: "EMA — Tresiba (деглудек 100/200): общая характеристика препарата"
+    url: "https://www.ema.europa.eu/en/documents/product-information/tresiba-epar-product-information_en.pdf"
+    note: "Срок после вскрытия 8 недель; запрет набирать шприцем"
+  - title: "EMA — Humalog (лизпро, в т.ч. 200 ЕД/мл): общая характеристика препарата"
+    url: "https://www.ema.europa.eu/en/documents/product-information/humalog-epar-product-information_en.pdf"
+    note: "Humalog 200 нельзя переносить из ручки в шприц"
+  - title: "Приказ Минздрава России № 1094н — назначение лекарств по МНН"
+    url: ""
+    note: "п. 5: назначение по МНН; торговое наименование — по решению врачебной комиссии"
+tags: [insulin, bazalnyy, bolyusnyy, hranenie, kontsentratsiya, spravochnik]
 authors: [iMironRU]
 contributors: [iMironRU]

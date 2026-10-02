@@ -1,24 +1,33 @@
-# Метаданные карточки. Каноничны. Фронтматтер для MkDocs инжектится из этого.
 id: 03-04_podschet_uglevodov_start
 title: "Подсчёт углеводов: с чего начать"
-card_type: knowledge            # knowledge | decision
-severity: routine          # acute | routine
+card_type: knowledge
+severity: routine
 disease_scope: t1d            # ИНВАРИАНТ: только t1d. СД1 ≠ СД2.
 audience: [self_adult, adolescent_transition, caregiver_of_child, caregiver_of_adult]    # роли-адресаты (именованные)
-
-publish_state: draft_verifying          # draft_verifying | published
-signoff: pending            # pending | signed (кто подписал — в signoff_by)
-signoff_by:                   # ФИО/роль человека с медобразованием; пусто пока pending
-
+publish_state: draft_verifying
+signoff: pending
+signoff_by:
 freshness:
-  class: slow             # evergreen | slow | volatile (ограничен типом карточки)
-  last_reviewed: 2026-05-17   # ставит человек при ревью
-  review_cycle_months: 12  # можно только УКОРОТИТЬ относительно максимума класса
-  # next_review и state НЕ пишем руками — вычисляет tools/freshness.py
-  watch_sources: []           # событийная дорожка: при изменении источника карточка флагуется
-
-clinical_refs: []             # обязательно непусто для severity: acute при signoff: signed
-external_references: []
-tags: []
+  class: slow
+  last_reviewed: 2026-05-17
+  review_cycle_months: 12
+  watch_sources:
+    - "ISPAD CPCG 2026 — Nutritional management (ожидается; заменит главу 2022)"
+    - "Алгоритмы специализированной медицинской помощи (Дедов) — новая редакция"
+    - "КР Минздрава «Сахарный диабет 1 типа у детей» — новая редакция"
+clinical_refs:
+  - "ISPAD CPCG 2022 — Nutritional management in children and adolescents with diabetes (Annan et al.). Pediatr Diabetes 2022;23(8):1297-1321. doi:10.1111/pedi.13429"
+  - "Smart CE et al. Children and adolescents on intensive insulin therapy maintain postprandial glycaemic control without precise carbohydrate counting. Diabet Med 2009;26(3):279-285. doi:10.1111/j.1464-5491.2009.02669.x"
+  - "Smart CE et al. Can children with type 1 diabetes and their caregivers estimate the carbohydrate content of meals and snacks? Diabet Med 2010;27(3):348-353. doi:10.1111/j.1464-5491.2010.02945.x"
+  - "ADA Standards of Care in Diabetes — 2026, Section 5. Diabetes Care 2026;49(Suppl 1):S89-S131. doi:10.2337/dc26-S005"
+  - "Алгоритмы специализированной медицинской помощи больным сахарным диабетом, 12-й выпуск / под ред. Дедова И.И. и др. Сахарный диабет 2025;28(5S):1-175. doi:10.14341/DM20255S"
+external_references:
+  - title: "Клинические рекомендации «Сахарный диабет 1 типа у детей» (Минздрав РФ, 2025)"
+    url: "https://cr.minzdrav.gov.ru/"
+    note: "ID 287_3; определение ХЕ: 10–12 г углеводов, в РФ чаще 10 г"
+  - title: "ТР ТС 022/2011 «Пищевая продукция в части её маркировки», ст. 4.9"
+    url: ""
+    note: "Углеводы на этикетке — без пищевых волокон; для продуктов, требующих приготовления, — без учёта приготовления"
+tags: [uglevody, hleb-edinicy, he, pitanie, etiketki]
 authors: [iMironRU]
 contributors: [iMironRU]

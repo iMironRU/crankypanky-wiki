@@ -1,24 +1,30 @@
-# Метаданные карточки. Каноничны. Фронтматтер для MkDocs инжектится из этого.
 id: 01-01_pervye_72_chasa
 title: "Первые 72 часа"
-card_type: knowledge            # knowledge | decision
-severity: acute          # acute | routine
+card_type: knowledge
+severity: acute
 disease_scope: t1d            # ИНВАРИАНТ: только t1d. СД1 ≠ СД2.
 audience: [self_adult, adolescent_transition, caregiver_of_child, caregiver_of_adult]    # роли-адресаты (именованные)
-
-publish_state: draft_verifying          # draft_verifying | published
-signoff: pending            # pending | signed (кто подписал — в signoff_by)
-signoff_by:                   # ФИО/роль человека с медобразованием; пусто пока pending
-
+publish_state: draft_verifying
+signoff: pending
+signoff_by:
 freshness:
-  class: slow             # evergreen | slow | volatile (ограничен типом карточки)
-  last_reviewed: 2026-05-17   # ставит человек при ревью
-  review_cycle_months: 3  # можно только УКОРОТИТЬ относительно максимума класса
-  # next_review и state НЕ пишем руками — вычисляет tools/freshness.py
-  watch_sources: []           # событийная дорожка: при изменении источника карточка флагуется
-
-clinical_refs: []             # обязательно непусто для severity: acute при signoff: signed
-external_references: []
-tags: []
+  class: slow
+  last_reviewed: 2026-05-17
+  review_cycle_months: 3
+  watch_sources:
+    - "ISPAD CPCG — Diabetes education / DKA (текущая редакция)"
+    - "ADA/EASD — consensus report по СД1 у взрослых (текущая редакция)"
+clinical_refs:
+  - "ISPAD CPCG 2022 — Diabetes education in children and adolescents (Lindholm Olinder et al.). Pediatr Diabetes 2022;23(8):1229-1242. doi:10.1111/pedi.13418"
+  - "ISPAD CPCG 2022 — Diabetic ketoacidosis and hyperglycemic hyperosmolar state (Glaser et al.). Pediatr Diabetes 2022;23(7):835-856. doi:10.1111/pedi.13406"
+  - "ISPAD CPCG 2024 — Insulin and adjunctive treatments in children and adolescents with diabetes (Cengiz et al.). Horm Res Paediatr 2024;97(6):584-614. doi:10.1159/000543169"
+  - "ISPAD CPCG 2022 — Psychological care of children, adolescents and young adults with diabetes (de Wit et al.). Pediatr Diabetes 2022;23(8):1373-1389. doi:10.1111/pedi.13428"
+  - "ADA/EASD 2021 — The management of type 1 diabetes in adults. A consensus report (Holt et al.). Diabetes Care 2021;44(11):2589-2625. doi:10.2337/dci21-0043"
+  - "ISPAD CPCG 2024 — Editorial (действующая 7-я редакция). Horm Res Paediatr 2024;97(6):527-528. doi:10.1159/000543154"
+external_references:
+  - title: "TODO reviewer: клинические рекомендации Минздрава РФ «Сахарный диабет 1 типа» (дети / взрослые), действующая редакция"
+    url: ""
+    note: "Сверить порядок старта (стационар/амбулаторно) и обучения с российской практикой"
+tags: [debyut, pervye-dni, statsionar, shkola-diabeta, ostroe]
 authors: [iMironRU]
 contributors: [iMironRU]
