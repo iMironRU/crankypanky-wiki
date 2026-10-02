@@ -1,3 +1,6 @@
-pyyaml
-python-dateutil
-mkdocs-material
+pyyaml>=6,<7
+python-dateutil>=2.8,<3
+# MkDocs 2.0 убирает систему плагинов и ломает темы — Material с ней не работает.
+# https://squidfunk.github.io/mkdocs-material/blog/2026/02/18/mkdocs-2.0/
+mkdocs>=1.6,<2
+mkdocs-material>=9.7.5,<10
