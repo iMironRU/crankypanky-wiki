@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 """Собирает build/ : .md + инжект фронтматтера из .meta.yml,
+отсылки «→ См. «…»» → ссылки (tools/crossrefs.py),
 плюс генерит индекс «Можно ли…?» и дашборд свежести."""
 import sys, shutil, datetime
 from pathlib import Path
 import yaml
 sys.path.insert(0, str(Path(__file__).parent))
 from freshness import next_review, state, banner_severity, policy_max_cycle
+from crossrefs import build_index, link_refs
 
 SRC=Path("content"); OUT=Path("build")
 if OUT.exists(): shutil.rmtree(OUT)
@@ -15,11 +17,11 @@ def parse_date(v):
     if isinstance(v, datetime.date): return v
     return datetime.date.fromisoformat(str(v))
 
-rows=[]; mozhno=[]
+rows=[]; mozhno=[]; idx=build_index(SRC); warns=[]
 for md in sorted(SRC.rglob("*.md")):
     rel=md.relative_to(SRC)
     meta_p=md.with_suffix(".meta.yml")
-    text=md.read_text(encoding="utf-8")
+    text=link_refs(md.read_text(encoding="utf-8"),rel,idx,warns.append)
     fm={}
     if meta_p.exists():
         meta=yaml.safe_load(meta_p.read_text(encoding="utf-8")) or {}
@@ -63,4 +65,5 @@ for r,sev,st,nr,pub in sorted(rows,key=lambda x:order.get(x[2],3)):
     "- [Можно ли…?](mozhno-li.md)\n- [Дашборд свежести](freshness-dashboard.md)\n\n"
     "> Обучающая информация, не персональные медицинские рекомендации.\n",
     encoding="utf-8")
-print("build/ собран")
+for w in warns: print(f"WARN {w}",file=sys.stderr)
+print("build/ собран"+(f", неразрешённых отсылок: {len(warns)}" if warns else ""))
