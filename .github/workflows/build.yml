@@ -6,18 +6,17 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
+  pull_request:          # на PR — только сборка и гейт, без деплоя
 
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      pages: write
-      id-token: write
+      contents: read
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with: { python-version: '3.12' }
 
       - name: Install
@@ -40,19 +39,26 @@ jobs:
         run: python tools/inject_frontmatter.py
 
       - name: MkDocs build
+        env:
+          NO_MKDOCS_2_WARNING: 'true'   # mkdocs<2 закреплён в requirements.txt
         run: mkdocs build --strict
 
       # Деплой по умолчанию — GitHub Pages. На Cloudflare Pages (превью на
       # каждый PR, быстрее в РФ/СНГ) меняется этот шаг, репозиторий тот же.
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with: { path: site }
 
+  # Требует Settings → Pages → Source: GitHub Actions, иначе deploy-pages падает 404.
   deploy:
     needs: build
+    if: github.ref == 'refs/heads/main'   # PR и ручной запуск с других веток — без деплоя
     runs-on: ubuntu-latest
     permissions: { pages: write, id-token: write }
+    concurrency: { group: pages, cancel-in-progress: false }
     environment:
       name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/deploy-pages@v4
+      - id: deployment
+        uses: actions/deploy-pages@v5
