@@ -15,6 +15,8 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0   # ИИ-предфильтру нужна база диффа: before (push) / merge-base (PR)
 
       - uses: actions/setup-python@v7
         with: { python-version: '3.12' }
@@ -25,14 +27,38 @@ jobs:
       - name: Гейт доверия (валидатор метаданных)
         run: python tools/validate_metadata.py content/
 
+      # Только push/PR: у schedule и ручного запуска нет нового диффа —
+      # ежедневная повторная рецензия тратила бы кредиты DeepSeek впустую.
       - name: ИИ-предфильтр (необязательный, не блокирует)
+        if: github.event_name == 'push' || github.event_name == 'pull_request'
         continue-on-error: true
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          EVENT: ${{ github.event_name }}
+          BEFORE: ${{ github.event.before }}
+          BASE_REF: ${{ github.base_ref }}
         run: |
           [ -z "$DEEPSEEK_API_KEY" ] && { echo "ключа нет — пропуск"; exit 0; }
-          for f in $(git diff --name-only HEAD~1 -- 'content/**/*.md' 2>/dev/null); do
-            [ -f "$f" ] && ./scripts/review.sh "$f" || true
+          if [ "$EVENT" = pull_request ]; then
+            base=$(git merge-base "origin/$BASE_REF" HEAD)
+          else
+            base=$BEFORE
+            # force-push: before недостижим из веток — пробуем добрать по SHA;
+            # новая ветка (before = 000…0) — базы нет вовсе.
+            git cat-file -e "$base^{commit}" 2>/dev/null ||
+              git fetch -q --no-tags --depth=1 origin "$base" 2>/dev/null ||
+              { echo "::warning::база диффа $base недоступна — пропуск"; exit 0; }
+          fi
+          echo "база диффа: $base"
+          git diff -z --name-only --diff-filter=d "$base" HEAD -- 'content/**/*.md' |
+            while IFS= read -r -d '' f; do
+              ./scripts/review.sh "$f" </dev/null ||
+                echo "::warning file=$f::ИИ-рецензия не получена"
+            done
+          # reviews/ в .gitignore, на раннере пуст до этого шага — всё найденное из этого прогона
+          for r in reviews/*/*.md; do
+            [ -f "$r" ] || continue
+            { printf '### %s\n' "$r"; sed '1,/^---$/d' "$r"; echo; } >> "$GITHUB_STEP_SUMMARY"
           done
 
       - name: Сборка build/ (+ индексы, дашборд свежести)
