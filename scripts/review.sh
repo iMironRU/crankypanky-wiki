@@ -20,10 +20,10 @@ if ep.exists():
         if ln and not ln.startswith("#") and "=" in ln:
             k,v=ln.split("=",1); env[k.strip()]=v.strip()
 if is_oa:
-    key=env.get("OPENAI_API_KEY"); url="https://api.openai.com/v1/chat/completions"; lab="OpenAI"
+    key=os.environ.get("OPENAI_API_KEY") or env.get("OPENAI_API_KEY"); url="https://api.openai.com/v1/chat/completions"; lab="OpenAI"
 else:
-    key=env.get("DEEPSEEK_API_KEY"); url="https://api.deepseek.com/chat/completions"; lab="DeepSeek"
-if not key: print("Нет API-ключа в .env",file=sys.stderr); sys.exit(1)
+    key=os.environ.get("DEEPSEEK_API_KEY") or env.get("DEEPSEEK_API_KEY"); url="https://api.deepseek.com/chat/completions"; lab="DeepSeek"
+if not key: print("Нет API-ключа ни в окружении, ни в .env",file=sys.stderr); sys.exit(1)
 sysmsg=(RD/"scripts"/"prompts"/"reviewer.md").read_text(encoding="utf-8")
 body=F.read_text(encoding="utf-8")
 payload={"model":MODEL,"messages":[{"role":"system","content":sysmsg},
