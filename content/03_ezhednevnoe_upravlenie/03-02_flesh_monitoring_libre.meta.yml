@@ -1,24 +1,31 @@
-# Метаданные карточки. Каноничны. Фронтматтер для MkDocs инжектится из этого.
 id: 03-02_flesh_monitoring_libre
 title: "Флеш-мониторинг: как начать"
-card_type: knowledge            # knowledge | decision
-severity: routine          # acute | routine
+card_type: knowledge
+severity: routine
 disease_scope: t1d            # ИНВАРИАНТ: только t1d. СД1 ≠ СД2.
 audience: [self_adult, adolescent_transition, caregiver_of_child, caregiver_of_adult]    # роли-адресаты (именованные)
-
-publish_state: draft_verifying          # draft_verifying | published
-signoff: pending            # pending | signed (кто подписал — в signoff_by)
-signoff_by:                   # ФИО/роль человека с медобразованием; пусто пока pending
-
+publish_state: draft_verifying
+signoff: pending
+signoff_by:
 freshness:
-  class: slow             # evergreen | slow | volatile (ограничен типом карточки)
-  last_reviewed: 2026-05-17   # ставит человек при ревью
-  review_cycle_months: 12  # можно только УКОРОТИТЬ относительно максимума класса
-  # next_review и state НЕ пишем руками — вычисляет tools/freshness.py
-  watch_sources: []           # событийная дорожка: при изменении источника карточка флагуется
-
-clinical_refs: []             # обязательно непусто для severity: acute при signoff: signed
-external_references: []
-tags: []
+  class: slow
+  last_reviewed: 2026-05-17
+  review_cycle_months: 6
+  watch_sources:
+    - "Abbott FreeStyle Libre — руководства пользователя (прогрев, срок ношения, мешающие вещества)"
+    - "ISPAD CPCG — Diabetes technologies: glucose monitoring (текущая редакция)"
+clinical_refs:
+  - "ISPAD CPCG 2024 — Diabetes technologies: glucose monitoring (Tauschman et al.). Horm Res Paediatr 2024;97(6):615-635. doi:10.1159/000543156"
+  - "ADA Standards of Care in Diabetes — 2026, Section 7: Diabetes Technology. Diabetes Care 2026;49(Suppl 1):S150-S165. doi:10.2337/dc26-S007"
+  - "Basu A et al. Time lag of glucose from intravascular to interstitial compartment in type 1 diabetes. J Diabetes Sci Technol 2015;9(1):63-68. doi:10.1177/1932296814554797"
+  - "Mensh BD et al. Susceptibility of interstitial continuous glucose monitor performance to sleeping position. J Diabetes Sci Technol 2013;7(4):863-870. doi:10.1177/193229681300700408"
+external_references:
+  - title: "Abbott — safety information FreeStyle Libre (мешающие вещества: витамин C, салициловая кислота)"
+    url: "https://www.freestyleprovider.abbott/us-en/safety-information.html"
+    note: "Libre 2/3: витамин C >500 мг/сут; Libre 2 Plus/3 Plus: >1000 мг/сут"
+  - title: "LibreLinkUp — удалённый просмотр для близких"
+    url: "https://www.librelinkup.com/"
+    note: "Официальное приложение Abbott"
+tags: [libre, sensor, isCGM, start, strelki, ozhidaemye-oshibki]
 authors: [iMironRU]
 contributors: [iMironRU]
