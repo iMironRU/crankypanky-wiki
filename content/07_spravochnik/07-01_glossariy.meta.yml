@@ -1,24 +1,27 @@
-# Метаданные карточки. Каноничны. Фронтматтер для MkDocs инжектится из этого.
 id: 07-01_glossariy
 title: "Глоссарий терминов"
-card_type: knowledge            # knowledge | decision
-severity: routine          # acute | routine
+card_type: knowledge
+severity: routine
 disease_scope: t1d            # ИНВАРИАНТ: только t1d. СД1 ≠ СД2.
 audience: [self_adult, adolescent_transition, caregiver_of_child, caregiver_of_adult]    # роли-адресаты (именованные)
-
-publish_state: draft_verifying          # draft_verifying | published
-signoff: pending            # pending | signed (кто подписал — в signoff_by)
-signoff_by:                   # ФИО/роль человека с медобразованием; пусто пока pending
-
+publish_state: draft_verifying
+signoff: pending
+signoff_by:
 freshness:
-  class: slow             # evergreen | slow | volatile (ограничен типом карточки)
-  last_reviewed: 2026-05-17   # ставит человек при ревью
-  review_cycle_months: 12  # можно только УКОРОТИТЬ относительно максимума класса
-  # next_review и state НЕ пишем руками — вычисляет tools/freshness.py
-  watch_sources: []           # событийная дорожка: при изменении источника карточка флагуется
-
-clinical_refs: []             # обязательно непусто для severity: acute при signoff: signed
+  class: slow
+  last_reviewed: 2026-05-17
+  review_cycle_months: 12
+  watch_sources:
+    - "ISPAD CPCG — Glycemic targets (текущая редакция; цели HbA1c и TIR)"
+    - "ADA Standards of Care — Section 6 (классификация гипогликемии)"
+    - "ISPAD CPCG — Screening and staging of T1D (стадии)"
+clinical_refs:
+  - "ISPAD CPCG 2024 — Glycemic targets (de Bock et al.). Horm Res Paediatr 2024;97:546-554. doi:10.1159/000543266"
+  - "ISPAD CPCG 2024 — Insulin and adjunctive treatments in children and adolescents with diabetes (Cengiz et al.). Horm Res Paediatr 2024;97(6):584-614. doi:10.1159/000543169"
+  - "ISPAD CPCG 2024 — Diabetes technologies: glucose monitoring (Tauschman et al.). Horm Res Paediatr 2024;97(6):615-635. doi:10.1159/000543156"
+  - "ISPAD CPCG 2024 — Screening, staging, and strategies to preserve beta-cell function in children and adolescents with type 1 diabetes (Haller et al.). Horm Res Paediatr 2024;97(6):529-545. doi:10.1159/000543035"
+  - "ADA Standards of Care in Diabetes — 2026, Section 6: Glycemic goals, hypoglycemia, and hyperglycemic crises (табл. 6.4 — уровни гипогликемии). Diabetes Care 2026;49(Suppl 1):S132-S149. doi:10.2337/dc26-S006"
 external_references: []
-tags: []
+tags: [glossariy, terminy, spravochnik, tir, hba1c]
 authors: [iMironRU]
 contributors: [iMironRU]
