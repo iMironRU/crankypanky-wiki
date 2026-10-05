@@ -1,12 +1,13 @@
-name: Build CrankyPanky
+name: Check CrankyPanky
 
+# Проверка: гейт доверия, ИИ-предфильтр по диффу, строгая сборка сайта.
+# Ничего не публикует — деплой в deploy.yml. Так проверки PR не касаются
+# окружения github-pages (его правило «только main» роняло запуски по PR).
 on:
-  schedule:
-    - cron: '0 2 * * *'   # ежедневно 02:00 UTC — ловит протухание по сроку
   workflow_dispatch:
   push:
     branches: [main]
-  pull_request:          # на PR — только сборка и гейт, без деплоя
+  pull_request:
 
 jobs:
   build:
@@ -68,23 +69,3 @@ jobs:
         env:
           NO_MKDOCS_2_WARNING: 'true'   # mkdocs<2 закреплён в requirements.txt
         run: mkdocs build --strict
-
-      # Деплой по умолчанию — GitHub Pages. На Cloudflare Pages (превью на
-      # каждый PR, быстрее в РФ/СНГ) меняется этот шаг, репозиторий тот же.
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v5
-        with: { path: site }
-
-  # Требует Settings → Pages → Source: GitHub Actions, иначе deploy-pages падает 404.
-  deploy:
-    needs: build
-    if: github.ref == 'refs/heads/main'   # PR и ручной запуск с других веток — без деплоя
-    runs-on: ubuntu-latest
-    permissions: { pages: write, id-token: write }
-    concurrency: { group: pages, cancel-in-progress: false }
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v5
