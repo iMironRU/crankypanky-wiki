@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{#- Баннер свежести и источники карточки. Данные — из фронтматтера, который
+    tools/inject_frontmatter.py инжектит из *.meta.yml; громкость баннера —
+    функция данных (tools/freshness.py: banner_severity), здесь только показ. -#}
+{% block content %}
+  {%- set m = page.meta or {} -%}
+  {%- if m.banner -%}
+    {%- set kind = {"loud": "danger", "normal": "warning", "soft": "note"}[m.banner] -%}
+    <div class="admonition {{ kind }}">
+      {%- if m.banner == "soft" %}
+      <p class="admonition-title">Скоро плановый пересмотр</p>
+      <p>Карточку пересмотрят до {{ m.next_review | e }}.</p>
+      {%- else %}
+      <p class="admonition-title">Срок проверки истёк</p>
+      <p>Плановый пересмотр этой карточки был назначен на {{ m.next_review | e }} и ещё
+        не проведён. Информация могла устареть — сверяйтесь с лечащим врачом и
+        действующими инструкциями.</p>
+      {%- endif %}
+    </div>
+  {%- endif -%}
+  {{ super() }}
+  {%- if m.sources or m.next_review %}
+    <hr>
+    {%- if m.sources %}
+    <h2 id="istochniki">Источники</h2>
+    <ul class="card-sources">
+      {%- for s in m.sources %}
+      <li>{% if s.url %}<a href="{{ s.url | e }}">{{ s.text | e }}</a>{% else %}{{ s.text | e }}{% endif %}
+        {%- if s.note %} — <em>{{ s.note | e }}</em>{% endif %}</li>
+      {%- endfor %}
+    </ul>
+    {%- endif %}
+    {%- if m.next_review %}
+    <p><small>Последняя проверка: {{ m.last_reviewed | e }} · следующий плановый пересмотр: {{ m.next_review | e }}{% if m.publish_state == "draft_verifying" %} · статус: на проверке у специалиста{% endif %}.</small></p>
+    {%- endif %}
+  {%- endif %}
+{% endblock %}

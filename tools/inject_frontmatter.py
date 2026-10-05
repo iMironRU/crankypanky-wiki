@@ -2,7 +2,7 @@
 """Собирает build/ : .md + инжект фронтматтера из .meta.yml,
 отсылки «→ См. «…»» → ссылки (tools/crossrefs.py),
 плюс генерит индекс «Можно ли…?» и дашборд свежести."""
-import sys, shutil, datetime
+import sys, shutil, datetime, re
 from pathlib import Path
 import yaml
 sys.path.insert(0, str(Path(__file__).parent))
@@ -12,6 +12,20 @@ from crossrefs import build_index, link_refs
 SRC=Path("content"); OUT=Path("build")
 if OUT.exists(): shutil.rmtree(OUT)
 OUT.mkdir()
+
+DOI_RE=re.compile(r"doi:\s*(10\.\S+?)[.,;]?(?:\s|$)")
+
+def sources(meta):
+    """Источники для показа на странице: clinical_refs (строки; DOI → ссылка)
+    и external_references (title/url/note)."""
+    out=[]
+    for r in meta.get("clinical_refs") or []:
+        m=DOI_RE.search(str(r)+" ")
+        out.append({"text":str(r),"url":f"https://doi.org/{m.group(1)}" if m else None})
+    for r in meta.get("external_references") or []:
+        if isinstance(r,dict) and r.get("title"):
+            out.append({"text":r["title"],"url":r.get("url") or None,"note":r.get("note") or None})
+    return out
 
 def parse_date(v):
     if isinstance(v, datetime.date): return v
@@ -35,8 +49,9 @@ for md in sorted(SRC.rglob("*.md")):
             banner=banner_severity(meta.get("severity","routine"),st,mo)
         fm={"title":meta.get("title"),"card_type":meta.get("card_type"),
             "severity":meta.get("severity"),"publish_state":meta.get("publish_state"),
-            "freshness_state":st,"next_review":str(nr) if nr else None,
-            "banner":banner}
+            "freshness_state":st,"last_reviewed":str(lr) if lr else None,
+            "next_review":str(nr) if nr else None,
+            "banner":banner,"sources":sources(meta)}
         rows.append((str(rel),meta.get("severity"),st,str(nr) if nr else "—",
                      meta.get("publish_state")))
         if "mozhno-li" in (meta.get("tags") or []):
