@@ -1,24 +1,27 @@
-# Метаданные карточки. Каноничны. Фронтматтер для MkDocs инжектится из этого.
 id: 06-02_gipo_strah
 title: "Гипо-страх и тревожность"
-card_type: knowledge            # knowledge | decision
-severity: routine          # acute | routine
+card_type: knowledge
+severity: routine
 disease_scope: t1d            # ИНВАРИАНТ: только t1d. СД1 ≠ СД2.
 audience: [self_adult, adolescent_transition, caregiver_of_child, caregiver_of_adult]    # роли-адресаты (именованные)
-
-publish_state: draft_verifying          # draft_verifying | published
-signoff: pending            # pending | signed (кто подписал — в signoff_by)
-signoff_by:                   # ФИО/роль человека с медобразованием; пусто пока pending
-
+publish_state: draft_verifying
+signoff: pending
+signoff_by:
 freshness:
-  class: evergreen             # evergreen | slow | volatile (ограничен типом карточки)
-  last_reviewed: 2026-05-17   # ставит человек при ревью
-  review_cycle_months: 36  # можно только УКОРОТИТЬ относительно максимума класса
-  # next_review и state НЕ пишем руками — вычисляет tools/freshness.py
-  watch_sources: []           # событийная дорожка: при изменении источника карточка флагуется
-
-clinical_refs: []             # обязательно непусто для severity: acute при signoff: signed
+  class: evergreen
+  last_reviewed: 2026-05-17
+  review_cycle_months: 36
+  watch_sources:
+    - "ISPAD CPCG 2026 — Hypoglycaemia и Psychological care (ожидаются; заменят главы 2022)"
+clinical_refs:
+  - "ISPAD CPCG 2022 — Psychological care of children, adolescents and young adults with diabetes (de Wit et al.). Pediatr Diabetes 2022;23(8):1373-1389. doi:10.1111/pedi.13428"
+  - "ISPAD CPCG 2022 — Assessment and management of hypoglycemia in children and adolescents with diabetes (Abraham et al.). Pediatr Diabetes 2022;23(8):1322-1340. doi:10.1111/pedi.13443"
+  - "ISPAD CPCG 2022 — Diabetes in adolescence (Gregory et al.). Pediatr Diabetes 2022;23(7):857-871. doi:10.1111/pedi.13408"
+  - "ADA Standards of Care in Diabetes — 2026, Section 5 (рек. 5.47) и Section 14 (скрининг страха гипо у родителей и детей). Diabetes Care 2026;49(Suppl 1):S89-S131, S297-S320. doi:10.2337/dc26-S005; doi:10.2337/dc26-S014"
+  - "Van Name MA et al. Nighttime is the worst time: parental fear of hypoglycemia in young children with type 1 diabetes. Pediatr Diabetes 2018;19(1):114-120. doi:10.1111/pedi.12525"
+  - "Chatwin H et al. Effectiveness of educational and behavioural interventions for reducing fear of hypoglycaemia: systematic review and meta-analysis. Diabet Med 2023;40(5):e15071. doi:10.1111/dme.15071"
+  - "Talbo MK et al. Effect of diabetes technologies on the fear of hypoglycaemia among people living with type 1 diabetes: a systematic review and meta-analysis. eClinicalMedicine 2023;62:102119. doi:10.1016/j.eclinm.2023.102119"
 external_references: []
-tags: []
+tags: [psihologiya, strah-gipo, trevozhnost, podrostki]
 authors: [iMironRU]
 contributors: [iMironRU]

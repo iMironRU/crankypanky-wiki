@@ -1,24 +1,37 @@
-# Метаданные карточки. Каноничны. Фронтматтер для MkDocs инжектится из этого.
 id: 06-01_vygoranie_roditeley
 title: "Выгорание родителей"
-card_type: knowledge            # knowledge | decision
-severity: routine          # acute | routine
+card_type: knowledge
+severity: routine
 disease_scope: t1d            # ИНВАРИАНТ: только t1d. СД1 ≠ СД2.
 audience: [caregiver_of_child]    # роли-адресаты: карточка про родителей детей
-
-publish_state: draft_verifying          # draft_verifying | published
-signoff: pending            # pending | signed (кто подписал — в signoff_by)
-signoff_by:                   # ФИО/роль человека с медобразованием; пусто пока pending
-
+publish_state: draft_verifying
+signoff: pending
+signoff_by:
 freshness:
-  class: evergreen             # evergreen | slow | volatile (ограничен типом карточки)
-  last_reviewed: 2026-05-17   # ставит человек при ревью
-  review_cycle_months: 36  # можно только УКОРОТИТЬ относительно максимума класса
-  # next_review и state НЕ пишем руками — вычисляет tools/freshness.py
-  watch_sources: []           # событийная дорожка: при изменении источника карточка флагуется
-
-clinical_refs: []             # обязательно непусто для severity: acute при signoff: signed
-external_references: []
-tags: []
+  class: evergreen
+  last_reviewed: 2026-05-17
+  review_cycle_months: 36
+  watch_sources:
+    - "ISPAD CPCG 2026 — Psychological care (ожидается; заменит главу 2022)"
+    - "Телефоны помощи: telefon-doveria.ru, psi.mchs.gov.ru — актуальность номеров"
+clinical_refs:
+  - "ISPAD CPCG 2022 — Psychological care of children, adolescents and young adults with diabetes (de Wit et al.). Pediatr Diabetes 2022;23(8):1373-1389. doi:10.1111/pedi.13428"
+  - "ADA Standards of Care in Diabetes — 2026, Section 5 (рек. 5.45: скрининг дистресса у людей с диабетом и опекунов). Diabetes Care 2026;49(Suppl 1):S89-S131. doi:10.2337/dc26-S005"
+  - "Chen Y et al. The prevalence of depression among parents of children/adolescents with type 1 diabetes: a systematic review and meta-analysis. Front Endocrinol 2023;14:1095729. doi:10.3389/fendo.2023.1095729"
+  - "Whittemore R et al. Psychological experience of parents of children with type 1 diabetes: a systematic mixed-studies review. Diabetes Educ 2012;38(4):562-579. doi:10.1177/0145721712445216"
+  - "Jaser SS et al. Sleep in children with type 1 diabetes and their parents in the T1D Exchange. Sleep Med 2017;39:108-115. doi:10.1016/j.sleep.2017.07.005"
+  - "Burckhardt MA et al. The use of CGM with remote monitoring improves psychosocial measures in parents of young children with type 1 diabetes. Diabetes Care 2018;41(12):2641-2643. doi:10.2337/dc18-0938"
+  - "Cobry EC et al. Improvements in parental sleep, fear of hypoglycemia, and diabetes distress with use of an advanced hybrid closed-loop system. Diabetes Care 2022;45(5):1292-1295. doi:10.2337/dc21-1778"
+external_references:
+  - title: "Единый общероссийский телефон доверия для детей, подростков и их родителей"
+    url: "https://telefon-doveria.ru/"
+    note: "8-800-2000-122, с мобильного 124; бесплатно, анонимно; режим зависит от региона"
+  - title: "Психологическая помощь МЧС России"
+    url: "https://psi.mchs.gov.ru/"
+    note: "+7 (495) 989-50-50, круглосуточно"
+  - title: "Московская служба психологической помощи населению"
+    url: "https://msph.ru/"
+    note: "051, с мобильного 8 (495) 051"
+tags: [psihologiya, roditeli, distress, son, podderzhka]
 authors: [iMironRU]
 contributors: [iMironRU]

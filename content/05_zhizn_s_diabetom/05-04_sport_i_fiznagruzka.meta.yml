@@ -1,24 +1,26 @@
-# Метаданные карточки. Каноничны. Фронтматтер для MkDocs инжектится из этого.
 id: 05-04_sport_i_fiznagruzka
 title: "Спорт и физнагрузка"
-card_type: knowledge            # knowledge | decision
-severity: routine          # acute | routine
+card_type: knowledge
+severity: routine
 disease_scope: t1d            # ИНВАРИАНТ: только t1d. СД1 ≠ СД2.
 audience: [self_adult, adolescent_transition, caregiver_of_child, caregiver_of_adult]    # роли-адресаты (именованные)
-
-publish_state: draft_verifying          # draft_verifying | published
-signoff: pending            # pending | signed (кто подписал — в signoff_by)
-signoff_by:                   # ФИО/роль человека с медобразованием; пусто пока pending
-
+publish_state: draft_verifying
+signoff: pending
+signoff_by:
 freshness:
-  class: slow             # evergreen | slow | volatile (ограничен типом карточки)
-  last_reviewed: 2026-05-17   # ставит человек при ревью
-  review_cycle_months: 12  # можно только УКОРОТИТЬ относительно максимума класса
-  # next_review и state НЕ пишем руками — вычисляет tools/freshness.py
-  watch_sources: []           # событийная дорожка: при изменении источника карточка флагуется
-
-clinical_refs: []             # обязательно непусто для severity: acute при signoff: signed
+  class: slow
+  last_reviewed: 2026-05-17
+  review_cycle_months: 12
+  watch_sources:
+    - "ISPAD CPCG 2026 — Exercise (ожидается; заменит главу 2022 и её таблицы)"
+    - "ISPAD/EASD — позиционные заявления по нагрузке с НМГ и AID"
+clinical_refs:
+  - "ISPAD CPCG 2022 — Exercise in children and adolescents with diabetes (Adolfsson et al.; табл. 4/5 — гликемия и кетоны перед нагрузкой). Pediatr Diabetes 2022;23(8):1341-1372. doi:10.1111/pedi.13452"
+  - "Moser O et al. Glucose management for exercise using continuous glucose monitoring (CGM) and intermittently scanned CGM systems in type 1 diabetes: EASD/ISPAD position statement. Diabetologia 2020;63(12):2501-2520. doi:10.1007/s00125-020-05263-9"
+  - "Moser O et al. The use of automated insulin delivery around physical activity and exercise in type 1 diabetes: EASD/ISPAD position statement. Diabetologia 2025;68(2):255-280. doi:10.1007/s00125-024-06308-z"
+  - "ISPAD CPCG 2022 — Assessment and management of hypoglycemia (Abraham et al.; медицинский опознавательный знак). Pediatr Diabetes 2022;23(8):1322-1340. doi:10.1111/pedi.13443"
+  - "ADA Standards of Care in Diabetes — 2026, Section 14 (рек. 14.8). Diabetes Care 2026;49(Suppl 1):S297-S320. doi:10.2337/dc26-S014"
 external_references: []
-tags: []
+tags: [sport, fiznagruzka, otsrochennaya-gipo, aid, mozhno-li]
 authors: [iMironRU]
 contributors: [iMironRU]
