@@ -8,3 +8,4 @@ theme:
   features: [navigation.sections, navigation.top, search.suggest, content.code.copy]
 markdown_extensions: [admonition, attr_list, tables, toc]
 plugins: [search]
+hooks: [hooks/nav_titles.py]   # разделы — по заголовкам модулей, обзор модуля первым

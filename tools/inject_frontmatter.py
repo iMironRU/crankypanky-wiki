@@ -56,6 +56,16 @@ for md in sorted(SRC.rglob("*.md")):
                      meta.get("publish_state")))
         if "mozhno-li" in (meta.get("tags") or []):
             mozhno.append((meta.get("title"),str(rel)))
+    if md.name=="_module.md":
+        # обзор модуля: подпись в навигации + оглавление карточек модуля
+        fm={"title":"Обзор модуля"}
+        items=[]
+        for card in sorted(md.parent.glob("*.md")):
+            if card.name=="_module.md": continue
+            cm=card.with_suffix(".meta.yml")
+            ct=(yaml.safe_load(cm.read_text(encoding="utf-8")) or {}).get("title") if cm.exists() else None
+            items.append(f"- [{ct or card.stem}]({card.name})")
+        text=text.rstrip()+"\n\n## Карточки модуля\n\n"+"\n".join(items)+"\n"
     dst=OUT/rel; dst.parent.mkdir(parents=True,exist_ok=True)
     head="---\n"+yaml.safe_dump(fm,allow_unicode=True,sort_keys=False)+"---\n\n" if fm else ""
     dst.write_text(head+text,encoding="utf-8")
