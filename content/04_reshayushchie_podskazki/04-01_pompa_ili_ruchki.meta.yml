@@ -1,24 +1,45 @@
-# Метаданные карточки. Каноничны. Фронтматтер для MkDocs инжектится из этого.
 id: 04-01_pompa_ili_ruchki
 title: "Помпа или ручки: дерево решений"
-card_type: decision            # knowledge | decision
-severity: routine          # acute | routine
+card_type: decision
+severity: routine
 disease_scope: t1d            # ИНВАРИАНТ: только t1d. СД1 ≠ СД2.
 audience: [self_adult, adolescent_transition, caregiver_of_child, caregiver_of_adult]    # роли-адресаты (именованные)
-
-publish_state: draft_verifying          # draft_verifying | published
-signoff: pending            # pending | signed (кто подписал — в signoff_by)
-signoff_by:                   # ФИО/роль человека с медобразованием; пусто пока pending
-
+publish_state: draft_verifying
+signoff: pending
+signoff_by:
 freshness:
-  class: volatile             # evergreen | slow | volatile (ограничен типом карточки)
-  last_reviewed: 2026-05-17   # ставит человек при ревью
-  review_cycle_months: 3  # можно только УКОРОТИТЬ относительно максимума класса
-  # next_review и state НЕ пишем руками — вычисляет tools/freshness.py
-  watch_sources: []           # событийная дорожка: при изменении источника карточка флагуется
+  class: volatile
+  last_reviewed: 2026-05-17
+  review_cycle_months: 3
+  watch_sources:
+    - "ISPAD CPCG — Diabetes technologies: insulin delivery (текущая редакция)"
+    - "Программа госгарантий / перечень ВМП (раздел I/II — помповая инсулинотерапия), ежегодная редакция"
+    - "Минздрав / суды — обеспечение расходниками к помпам (регионы, 3053-р)"
+    - "Алгоритмы специализированной помощи (Дедов) и КР «СД1 у детей» — новая редакция (сроки перехода на помпу)"
 
-clinical_refs: []             # обязательно непусто для severity: acute при signoff: signed
-external_references: []
-tags: []
+# Фасеты решающей карточки — это данные. Представление решаем позже.
+facets:
+  body_device_ok: [yes, no, unsure]
+  cgm_status: [has_cgm, planned, none]
+  hard_situations: [tiny_doses, frequent_hypo, dawn_phenomenon, high_variability, sport, unpredictable_meals]
+  training_ready: [yes, not_yet]
+  supply_region: [stable, unstable, unknown]
+  who_manages: [parents, teen_self, adult_self]
+  months_since_diagnosis: [under6, 6plus]
+
+clinical_refs:
+  - "ISPAD CPCG 2024 — Diabetes technologies: insulin delivery (Biester et al.). Horm Res Paediatr 2024;97(6):636-662. doi:10.1159/000543034"
+  - "ISPAD CPCG 2024 — Insulin and adjunctive treatments in children and adolescents with diabetes (Cengiz et al.). Horm Res Paediatr 2024;97(6):584-614. doi:10.1159/000543169"
+  - "ISPAD CPCG 2022 — Sick day management in children and adolescents with diabetes (Phelan et al.). Pediatr Diabetes 2022;23(7):912-925. doi:10.1111/pedi.13415"
+  - "ADA Standards of Care in Diabetes — 2026, Section 7: Diabetes Technology (рек. 7.8, 7.25a). Diabetes Care 2026;49(Suppl 1):S150-S165. doi:10.2337/dc26-S007"
+  - "Алгоритмы специализированной медицинской помощи больным сахарным диабетом, 12-й выпуск (раздел 5.1.2 «Помповая инсулинотерапия»). Сахарный диабет 2025;28(5S):1-175. doi:10.14341/DM20255S"
+external_references:
+  - title: "Постановление Правительства РФ от 29.12.2025 № 2188 — Программа госгарантий на 2026 г. (перечень ВМП: педиатрия гр. 42, эндокринология гр. 86 — раздел I; педиатрия гр. 58 — раздел II)"
+    url: "http://publication.pravo.gov.ru/document/0001202512300036"
+    note: "Установка помпы — ВМП; ред. от 02.04.2026 № 365"
+  - title: "Клинические рекомендации «Сахарный диабет 1 типа у детей» (Минздрав РФ, 2025)"
+    url: "https://cr.minzdrav.gov.ru/"
+    note: "ID 287_3; переход на помпу — после освоения интенсифицированной схемы"
+tags: [pompa, ruchki, aid, petlya, vybor, decision]
 authors: [iMironRU]
 contributors: [iMironRU]
