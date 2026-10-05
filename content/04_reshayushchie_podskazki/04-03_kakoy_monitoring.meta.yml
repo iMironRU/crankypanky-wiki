@@ -1,24 +1,43 @@
-# Метаданные карточки. Каноничны. Фронтматтер для MkDocs инжектится из этого.
 id: 04-03_kakoy_monitoring
 title: "Какой мониторинг под нас"
-card_type: decision            # knowledge | decision
-severity: routine          # acute | routine
+card_type: decision
+severity: routine
 disease_scope: t1d            # ИНВАРИАНТ: только t1d. СД1 ≠ СД2.
 audience: [self_adult, adolescent_transition, caregiver_of_child, caregiver_of_adult]    # роли-адресаты (именованные)
-
-publish_state: draft_verifying          # draft_verifying | published
-signoff: pending            # pending | signed (кто подписал — в signoff_by)
-signoff_by:                   # ФИО/роль человека с медобразованием; пусто пока pending
-
+publish_state: draft_verifying
+signoff: pending
+signoff_by:
 freshness:
-  class: volatile             # evergreen | slow | volatile (ограничен типом карточки)
-  last_reviewed: 2026-05-17   # ставит человек при ревью
-  review_cycle_months: 3  # можно только УКОРОТИТЬ относительно максимума класса
-  # next_review и state НЕ пишем руками — вычисляет tools/freshness.py
-  watch_sources: []           # событийная дорожка: при изменении источника карточка флагуется
+  class: volatile
+  last_reviewed: 2026-05-17
+  review_cycle_months: 3
+  watch_sources:
+    - "Реестр медизделий Росздравнадзора — регистрация НМГ/isCGM (Libre 3, Dexcom, Simplera, китайские системы)"
+    - "Распоряжения Правительства № 1468-р / 1469-р от 12.06.2026 и ПП № 737 — продление программы НМГ после 2027"
+    - "ISPAD CPCG — Diabetes technologies: glucose monitoring (текущая редакция)"
 
-clinical_refs: []             # обязательно непусто для severity: acute при signoff: signed
-external_references: []
-tags: []
+# Фасеты решающей карточки — это данные. Представление решаем позже.
+facets:
+  alarms_needed: [yes, no, unsure]
+  pump_or_loop_planned: [yes, no]
+  remote_view_needed: [yes, no]
+  age_band: [under2, 2to3, 4to6, 7plus, adult]
+  skin_sensitivity: [atopy, none, unknown]
+  calibration_ok: [yes, no]
+  rf_registered_only: [yes]
+  state_supply: [federal_child_2_17, regional, none]
+
+clinical_refs:
+  - "ISPAD CPCG 2024 — Diabetes technologies: glucose monitoring (Tauschman et al.). Horm Res Paediatr 2024;97(6):615-635. doi:10.1159/000543156"
+  - "ADA Standards of Care in Diabetes — 2026, Section 7: Diabetes Technology. Diabetes Care 2026;49(Suppl 1):S150-S165. doi:10.2337/dc26-S007"
+  - "Малиевский О.А., Юльчурин С.А. Правовые вопросы применения НМГ у детей с СД1 (Legal issues of the use of continuous glucose monitoring in children with type 1 diabetes). Проблемы эндокринологии 2023;69(4):96-100. doi:10.14341/probl13264"
+external_references:
+  - title: "Реестр медицинских изделий Росздравнадзора"
+    url: "https://roszdravnadzor.gov.ru/services/misearch"
+    note: "Проверка номера РЗН; на 05.10.2026: Libre 2 — РЗН 2022/16406; Libre 3, Dexcom, Sibionics, Ottai — не найдены"
+  - title: "Распоряжение Правительства РФ от 12.06.2026 № 1468-р"
+    url: ""
+    note: "НМГ детям с СД1 2–17 лет и беременным (2026–2027); закупка централизованная (ПП № 737 от 12.06.2026)"
+tags: [ngm, cgm, libre, monitoring, vybor, decision, mozhno-li]
 authors: [iMironRU]
 contributors: [iMironRU]

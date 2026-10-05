@@ -1,24 +1,34 @@
-# Метаданные карточки. Каноничны. Фронтматтер для MkDocs инжектится из этого.
 id: 08-02_gde_brat_rashodku
 title: "Где брать расходку"
-card_type: knowledge            # knowledge | decision
-severity: routine          # acute | routine
+card_type: knowledge
+severity: routine
 disease_scope: t1d            # ИНВАРИАНТ: только t1d. СД1 ≠ СД2.
 audience: [self_adult, adolescent_transition, caregiver_of_child, caregiver_of_adult]    # роли-адресаты (именованные)
-
-publish_state: draft_verifying          # draft_verifying | published
-signoff: pending            # pending | signed (кто подписал — в signoff_by)
-signoff_by:                   # ФИО/роль человека с медобразованием; пусто пока pending
-
+publish_state: draft_verifying
+signoff: pending
+signoff_by:
 freshness:
-  class: volatile             # evergreen | slow | volatile (ограничен типом карточки)
-  last_reviewed: 2026-05-17   # ставит человек при ревью
-  review_cycle_months: 3  # можно только УКОРОТИТЬ относительно максимума класса
-  # next_review и state НЕ пишем руками — вычисляет tools/freshness.py
-  watch_sources: []           # событийная дорожка: при изменении источника карточка флагуется
-
-clinical_refs: []             # обязательно непусто для severity: acute при signoff: signed
-external_references: []
-tags: []
+  class: volatile
+  last_reviewed: 2026-05-17
+  review_cycle_months: 3
+  watch_sources:
+    - "Росздравнадзор — реестр медизделий и реестр аптек с разрешением на дистанционную торговлю"
+    - "61-ФЗ / 323-ФЗ — изменения в правилах розничной продажи лекарств и обращения медизделий"
+clinical_refs:
+  - "ISPAD CPCG 2024 — Insulin and adjunctive treatments (хранение: замёрзший инсулин, хлопья, помутнение — не использовать) (Cengiz et al.). Horm Res Paediatr 2024;97(6):584-614. doi:10.1159/000543169"
+external_references:
+  - title: "Федеральный закон № 61-ФЗ «Об обращении лекарственных средств», ст. 55 ч. 1"
+    url: "https://www.consultant.ru/document/cons_doc_LAW_99350/"
+    note: "Розничная торговля лекарствами — только аптечные организации и ИП с фармлицензией"
+  - title: "Федеральный закон № 323-ФЗ, ст. 38 ч. 4 — обращение только зарегистрированных медизделий"
+    url: ""
+    note: "Ввоз физлицами для личного пользования допускается (Соглашение ЕАЭС от 23.12.2014, ст. 4 п. 11)"
+  - title: "Росздравнадзор — реестр аптек с разрешением на дистанционную торговлю"
+    url: "https://roszdravnadzor.gov.ru/spec/drugs/distancetrade"
+    note: "Проверка онлайн-аптеки"
+  - title: "Реестр медицинских изделий Росздравнадзора"
+    url: "https://roszdravnadzor.gov.ru/services/misearch"
+    note: "Проверка номера РЗН"
+tags: [rashodka, apteki, marketpleysy, hranenie-insulina, snabzhenie]
 authors: [iMironRU]
 contributors: [iMironRU]
