@@ -1,24 +1,40 @@
-# Метаданные карточки. Каноничны. Фронтматтер для MkDocs инжектится из этого.
 id: 05-01_shkola_i_sadik
 title: "Школа и садик: кто за что отвечает"
-card_type: knowledge            # knowledge | decision
-severity: routine          # acute | routine
+card_type: knowledge
+severity: routine
 disease_scope: t1d            # ИНВАРИАНТ: только t1d. СД1 ≠ СД2.
 audience: [caregiver_of_child]    # роли-адресаты (именованные)
-
-publish_state: draft_verifying          # draft_verifying | published
-signoff: pending            # pending | signed (кто подписал — в signoff_by)
-signoff_by:                   # ФИО/роль человека с медобразованием; пусто пока pending
-
+publish_state: draft_verifying
+signoff: pending
+signoff_by:
 freshness:
-  class: slow             # evergreen | slow | volatile (ограничен типом карточки)
-  last_reviewed: 2026-05-17   # ставит человек при ревью
-  review_cycle_months: 12  # можно только УКОРОТИТЬ относительно максимума класса
-  # next_review и state НЕ пишем руками — вычисляет tools/freshness.py
-  watch_sources: []           # событийная дорожка: при изменении источника карточка флагуется
-
-clinical_refs: []             # обязательно непусто для severity: acute при signoff: signed
-external_references: []
-tags: []
+  class: slow
+  last_reviewed: 2026-05-17
+  review_cycle_months: 6
+  watch_sources:
+    - "СанПиН 2.3/2.4.3590-20 — действует до 01.01.2027, ждать замену (питание детей с диабетом)"
+    - "Порядки ОГЭ/ЕГЭ (232/551, 233/552) и ежегодные рекомендации Рособрнадзора — условия для детей с СД1, телефон для НМГ"
+    - "Приказ Минздрава № 213н (медпомощь в образовательных организациях) — изменения"
+    - "ISPAD CPCG — диабет в школе (новая редакция)"
+clinical_refs:
+  - "ISPAD CPCG 2022 — Management and support of children and adolescents with diabetes in school (Lawrence et al.). Pediatr Diabetes 2022;23(8):1478-1495. doi:10.1111/pedi.13432"
+  - "Goss PW et al. ISPAD Position Statement on Type 1 Diabetes in Schools. Horm Res Paediatr 2026;99(1):147-157. doi:10.1159/000541802"
+external_references:
+  - title: "Федеральный закон № 273-ФЗ «Об образовании в РФ» — ст. 67 ч. 4 (отказ только при отсутствии мест), ст. 79 (условия для детей с инвалидностью/ОВЗ), ст. 41 ч. 2 (первая помощь педагогами)"
+    url: "https://www.consultant.ru/document/cons_doc_LAW_140174/"
+    note: "ОВЗ — по заключению ПМПК"
+  - title: "Приказ Минздрава России от 14.04.2025 № 213н (заменил № 822н с 01.09.2025), п. 15–19"
+    url: ""
+    note: "Применение лекарств детям с хроническими заболеваниями в медпункте по заявлению родителей и справке врача"
+  - title: "СанПиН 2.3/2.4.3590-20, п. 8.2.1, 8.2.3; МР 2.4.0162-19"
+    url: ""
+    note: "Индивидуальное меню по назначению врача; домашняя еда хранится и разогревается"
+  - title: "Порядки ГИА: ЕГЭ (233/552) п. 59, 71; ОГЭ (232/551) п. 50, 62"
+    url: ""
+    note: "+1,5 часа, питание и перерывы при справке об инвалидности или ПМПК; лекарства и перекус на столе у любого участника"
+  - title: "Письмо Рособрнадзора от 12.02.2024 № 04-35 — телефон для НМГ на экзамене"
+    url: ""
+    note: "Сверено по вторичным источникам; порядок на текущий год уточнять в регионе"
+tags: [shkola, detskiy-sad, individualnyy-plan, oge, ege, prava]
 authors: [iMironRU]
 contributors: [iMironRU]

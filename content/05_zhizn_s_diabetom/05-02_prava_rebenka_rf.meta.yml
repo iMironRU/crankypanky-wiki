@@ -1,24 +1,47 @@
-# Метаданные карточки. Каноничны. Фронтматтер для MkDocs инжектится из этого.
 id: 05-02_prava_rebenka_rf
 title: "Права ребёнка с СД1 в РФ"
-card_type: knowledge            # knowledge | decision
-severity: routine          # acute | routine
+card_type: knowledge
+severity: routine
 disease_scope: t1d            # ИНВАРИАНТ: только t1d. СД1 ≠ СД2.
 audience: [caregiver_of_child]    # роли-адресаты (именованные)
-
-publish_state: draft_verifying          # draft_verifying | published
-signoff: pending            # pending | signed (кто подписал — в signoff_by)
-signoff_by:                   # ФИО/роль человека с медобразованием; пусто пока pending
-
+publish_state: draft_verifying
+signoff: pending
+signoff_by:
 freshness:
-  class: volatile             # evergreen | slow | volatile (ограничен типом карточки)
-  last_reviewed: 2026-05-17   # ставит человек при ревью
-  review_cycle_months: 3  # можно только УКОРОТИТЬ относительно максимума класса
-  # next_review и state НЕ пишем руками — вычисляет tools/freshness.py
-  watch_sources: []           # событийная дорожка: при изменении источника карточка флагуется
-
-clinical_refs: []             # обязательно непусто для severity: acute при signoff: signed
-external_references: []
-tags: []
+  class: volatile
+  last_reviewed: 2026-05-17
+  review_cycle_months: 3
+  watch_sources:
+    - "СФР — индексация пенсий (1 апреля), ЕДВ и выплаты по уходу (1 февраля)"
+    - "ТК РФ ст. 259, 262, 262.1, 263; НК РФ ст. 218; 400-ФЗ ст. 32 — изменения"
+    - "ПП № 588 / приказ Минтруда № 374н — критерии инвалидности при СД1"
+    - "Распоряжение № 1468-р (НМГ детям 2–17) — продление после 2027"
+clinical_refs: []
+external_references:
+  - title: "Постановление Правительства РФ от 05.04.2022 № 588, разд. III п. 18"
+    url: ""
+    note: "«Ребёнок-инвалид» до 18 лет при инсулинозависимом сахарном диабете"
+  - title: "Социальный фонд России (СФР) — размеры выплат 2026"
+    url: "https://sfr.gov.ru/"
+    note: "Соцпенсия ребёнку-инвалиду ≈ 22 618 ₽ (с 01.04.2026); ЕДВ 4 397,23 ₽ и выплата по уходу 11 563,20 ₽ (с 01.02.2026)"
+  - title: "Указ Президента № 175 (ред. Указа № 1125 от 29.12.2024) — выплата по уходу"
+    url: ""
+    note: "С 2025 — сохраняется при неполном рабочем времени, в т.ч. удалённо"
+  - title: "Трудовой кодекс РФ — ст. 259 ч. 3, 262, 262.1, 263"
+    url: "https://www.consultant.ru/document/cons_doc_LAW_34683/"
+    note: "4 доп. выходных в месяц; до 24 дней подряд раз в год; согласие на командировки/ночь; отпуск в удобное время"
+  - title: "НК РФ ст. 218 п. 1 пп. 4 — вычет на ребёнка-инвалида"
+    url: ""
+    note: "12 000 ₽ в месяц каждому родителю до дохода 450 000 ₽ с начала года (с 2025)"
+  - title: "Федеральный закон № 400-ФЗ «О страховых пенсиях», ст. 32 ч. 1 п. 1; ст. 12 ч. 1 п. 6"
+    url: ""
+    note: "Досрочная пенсия родителю ребёнка-инвалида, воспитанного до 8 лет; уход засчитывается в стаж"
+  - title: "Федеральный закон № 178-ФЗ, ст. 6.2"
+    url: ""
+    note: "Санаторно-курортное лечение детям-инвалидам — 21 день; вторая путёвка и проезд сопровождающему"
+  - title: "Постановление Правительства РФ от 30.07.1994 № 890"
+    url: "https://www.consultant.ru/document/cons_doc_LAW_4208/"
+    note: "Региональная льгота при диабете без инвалидности; дети до 3 лет — все лекарства"
+tags: [prava, invalidnost, vyplaty, rabota-roditeley, lgoty]
 authors: [iMironRU]
 contributors: [iMironRU]

@@ -1,24 +1,32 @@
-# Метаданные карточки. Каноничны. Фронтматтер для MkDocs инжектится из этого.
 id: 05-03_puteshestviya
 title: "Путешествия с диабетом"
-card_type: knowledge            # knowledge | decision
-severity: routine          # acute | routine
+card_type: knowledge
+severity: routine
 disease_scope: t1d            # ИНВАРИАНТ: только t1d. СД1 ≠ СД2.
 audience: [self_adult, adolescent_transition, caregiver_of_child, caregiver_of_adult]    # роли-адресаты (именованные)
-
-publish_state: draft_verifying          # draft_verifying | published
-signoff: pending            # pending | signed (кто подписал — в signoff_by)
-signoff_by:                   # ФИО/роль человека с медобразованием; пусто пока pending
-
+publish_state: draft_verifying
+signoff: pending
+signoff_by:
 freshness:
-  class: slow             # evergreen | slow | volatile (ограничен типом карточки)
-  last_reviewed: 2026-05-17   # ставит человек при ревью
-  review_cycle_months: 12  # можно только УКОРОТИТЬ относительно максимума класса
-  # next_review и state НЕ пишем руками — вычисляет tools/freshness.py
-  watch_sources: []           # событийная дорожка: при изменении источника карточка флагуется
-
-clinical_refs: []             # обязательно непусто для severity: acute при signoff: signed
-external_references: []
-tags: []
+  class: slow
+  last_reviewed: 2026-05-17
+  review_cycle_months: 6
+  watch_sources:
+    - "Приказ Минтранса № 34 (правила досмотра) и ФАП-82 — изменения"
+    - "Medtronic / Abbott — рекомендации по досмотру в аэропорту"
+clinical_refs:
+  - "ISPAD CPCG 2024 — Insulin and adjunctive treatments (инсулин только в ручной клади, запасной инсулин, хранение в жару, замёрзший — выбросить) (Cengiz et al.). Horm Res Paediatr 2024;97(6):584-614. doi:10.1159/000543169"
+  - "Pinsker JE et al. Extensive clinical experience: a simple guide to basal insulin adjustments for long-distance travel (экспертное мнение). J Diabetes Metab Disord 2013;12:59. doi:10.1186/2251-6581-12-59"
+external_references:
+  - title: "Приказ Минтранса России от 04.02.2025 № 34 — правила проведения досмотра (прил. 7 п. 12; п. 15, 31, 50)"
+    url: ""
+    note: "Лекарства в ручной клади в количестве, необходимом на время полёта; жидкости до 100 мл; действует с 01.03.2025 (заменил приказ № 104)"
+  - title: "Medtronic (MiniMed 780G) — путешествия и досмотр"
+    url: "https://www.minimed.com/"
+    note: "Помпу и передатчик не пропускать через рентген; для сканера в полный рост — снять или ручной досмотр"
+  - title: "Abbott FreeStyle Libre — досмотр в аэропорту"
+    url: "https://www.freestyle.abbott/"
+    note: "Металлодетектор — можно; сканеры в полный рост не оценивались — попросить другой способ или снять сенсор"
+tags: [puteshestviya, aeroport, chasovye-poyasa, hranenie-insulina, mozhno-li]
 authors: [iMironRU]
 contributors: [iMironRU]
